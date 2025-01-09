@@ -69,7 +69,7 @@
             <img src="photo/IMG_5743.JPG" alt="Photo 3">
             <img src="photo/IMG_6252.JPG" alt="Photo 4">
         </div>
-        <audio id="background-music" loop>
+        <audio controls loop>
             <source src="bgm/comptine.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
@@ -81,7 +81,6 @@
     <script>
         const images = document.querySelectorAll('.gallery img');
         let currentIndex = 0;
-        const audio = document.getElementById('background-music');
 
         function showNextImage() {
             images[currentIndex].classList.remove('active');
@@ -90,16 +89,6 @@
         }
 
         setInterval(showNextImage, 3000); // Change image every 3 seconds
-
-        // Enable audio playback after user interaction
-        document.addEventListener('DOMContentLoaded', () => {
-            document.addEventListener('click', () => {
-                if (audio.paused) {
-                    audio.muted = false;
-                    audio.play().catch((error) => console.error('Audio play error:', error));
-                }
-            });
-        });
     </script>
 </body>
 </html>
