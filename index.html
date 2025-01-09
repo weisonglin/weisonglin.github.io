@@ -25,7 +25,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: calc(100vh - 60px);
+            height: calc(100vh - 180px);
             position: relative;
         }
         .gallery img {
@@ -46,6 +46,16 @@
             left: 10px;
             z-index: 10;
         }
+        footer {
+            background-color: #444;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        footer a {
+            color: #ffd700;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -54,17 +64,19 @@
     </header>
     <main>
         <div class="gallery">
-            <!-- Add your photos here -->
             <img src="photo/IMG_5589.JPG" alt="Photo 1" class="active">
             <img src="photo/IMG_5718.JPG" alt="Photo 2">
             <img src="photo/IMG_5743.JPG" alt="Photo 3">
             <img src="photo/IMG_6252.JPG" alt="Photo 4">
         </div>
-        <audio id="background-music" controls loop>
+        <audio id="background-music" loop>
             <source src="bgm/comptine.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
     </main>
+    <footer>
+        <p>Contact me at: <a href="mailto:lila@lilalin.world">lila@lilalin.world</a></p>
+    </footer>
 
     <script>
         const images = document.querySelectorAll('.gallery img');
@@ -81,7 +93,6 @@
 
         // Enable audio playback after user interaction
         document.addEventListener('DOMContentLoaded', () => {
-            const audio = document.getElementById('background-music');
             document.addEventListener('click', () => {
                 if (audio.paused) {
                     audio.muted = false;
