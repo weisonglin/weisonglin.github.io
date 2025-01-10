@@ -1,193 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="photo/cute_rabbit.png" type="image/png">
-    <title>Lila's World</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="photo/cute_rabbit.png" type="image/png">
+  <title>Lila's World</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-        body {
-            font-family: 'Poppins', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #d7aefb, #f4f4f9);
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            overflow: hidden;
-        }
-        header {
-            background: radial-gradient(circle, #a393eb, #6c63ff);
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        header h1 {
-            margin-right: 20px;
-            font-size: 2.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        header img {
-            height: 80px;
-            width: auto;
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-        .gallery {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-        .gallery img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 10px;
-            box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            position: absolute;
-            transition: opacity 1.5s ease, transform 1.5s ease;
-            transform: scale(0.95);
-        }
-        .gallery img.active {
-            opacity: 1;
-            transform: scale(1);
-        }
-        footer {
-            background: radial-gradient(circle, #a393eb, #6c63ff);
-            color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
-            font-size: 1.2rem;
-        }
-        footer .audio-container {
-            flex: 0 0 auto;
-            margin-left: 20px;
-        }
-        footer .email-container {
-            flex: 0 0 auto;
-            margin-right: 20px;
-        }
-        footer a {
-            color: #ffd700;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        footer a:hover {
-            text-decoration: underline;
-            color: #fff;
-        }
-        .gallery-controls {
-            position: absolute;
-            bottom: 20px;
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            gap: 10px;
-        }
-        .gallery-controls button {
-            background: linear-gradient(135deg, #6c63ff, #a393eb);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 150px;
-        }
-        .gallery-controls button:hover {
-            background: linear-gradient(135deg, #5548c8, #867ae9);
-            transform: scale(1.1);
-        }
-    </style>
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #d7aefb, #f4f4f9);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+      min-height: 100vh;
+    }
+
+    header {
+      background: radial-gradient(circle, #a393eb, #6c63ff);
+      color: white;
+      padding: 8px 0;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin-right: 15px;
+      font-size: 1.6rem;
+      text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);
+    }
+
+    header img {
+      height: 45px;
+      width: auto;
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-8px);
+      }
+      60% {
+        transform: translateY(-4px);
+      }
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px;
+      flex: 1;
+      flex-grow: 1;
+      flex-wrap: wrap;
+      overflow-y: auto;
+      margin-top: 20px;
+    }
+
+    .content {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      max-width: 1100px;
+      padding: 10px;
+    }
+
+    .photo {
+      flex: 0 0 30%; 
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      position: relative;
+      max-width: 300px; 
+    }
+
+    .photo img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+      position: absolute;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .photo img.active {
+      opacity: 1;
+    }
+
+    .about-me {
+      flex: 0 0 50%; 
+      background-color: #f8f8f8;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      height: auto;
+      max-width: 600px;
+      overflow-y: auto;
+      margin-left: 30px; 
+      background: linear-gradient(135deg, #d7aefb, #f4f4f9); /* Light purple background */
+      color: #6c63ff; /* Purple text color */
+      min-height: 350px; /* Fixed height even if content is missing */
+    }
+
+    .about-me h2 {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      color: #6c63ff; /* Purple heading */
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .about-me p {
+      font-size: 1.3rem;
+      line-height: 1.7;
+      color: #555;
+    }
+
+    footer {
+      background: radial-gradient(circle, #a393eb, #6c63ff);
+      color: white;
+      padding: 8px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.1);
+      font-size: 0.9rem;
+    }
+
+    footer .audio-container {
+      flex: 0 0 auto;
+      margin-left: 15px;
+    }
+
+    footer .email-container {
+      flex: 0 0 auto;
+      margin-right: 15px;
+    }
+
+    footer a {
+      color: #ffd700;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome To My World</h1>
-        <img src="photo/cute_rabbit.png" alt="Rabbit">
-    </header>
-    <main>
+  <header>
+    <h1>Welcome To My World</h1>
+    <img src="photo/cute_rabbit.png" alt="Rabbit">
+  </header>
+  <main>
+    <div class="content">
+      <div class="photo">
         <div class="gallery">
-            <img src="photo/IMG_5589.JPG" alt="Photo 1" class="active">
-            <img src="photo/IMG_5718.JPG" alt="Photo 2">
-            <img src="photo/IMG_5743.JPG" alt="Photo 3">
-            <img src="photo/IMG_6252.JPG" alt="Photo 4">
-            <img src="photo/IMG_5033.JPG" alt="Photo 5">
+          <img src="photo/IMG_5589.JPG" alt="Photo 1" class="active">
+          <img src="photo/IMG_5718.JPG" alt="Photo 2">
+          <img src="photo/IMG_5743.JPG" alt="Photo 3">
+          <img src="photo/IMG_6252.JPG" alt="Photo 4">
+          <img src="photo/IMG_5033.JPG" alt="Photo 5">
         </div>
-        <div class="gallery-controls">
-            <button id="prev">Previous</button>
-            <button id="next">Next</button>
-        </div>
-    </main>
-    <footer>
-        <div class="audio-container">
-            <audio controls loop>
-                <source src="bgm/comptine.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
-        <div class="email-container">
-            <p>Contact me at: <a href="mailto:lila@lilalin.world">lila@lilalin.world</a></p>
-        </div>
-    </footer>
+      </div>
+      <div class="about-me">
+        <h2>About Me</h2>
+        <p>大家好我叫林荔拉，林是林荔拉的林，荔是林荔拉的荔，拉也是林荔拉的拉。我爱我的妈妈。我也爱我的爸爸。特别我的爸爸。我是最爱最爱了。虽然他天天欺负我，还说要单手捏爆我的头，但我依然爱他</p>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="audio-container">
+      <audio controls loop>
+        <source src="bgm/comptine.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    <div class="email-container">
+      <p>Contact me at: <a href="mailto:lila@lilalin.world">lila@lilalin.world</a></p>
+    </div>
+  </footer>
 
-    <script>
-        const images = document.querySelectorAll('.gallery img');
-        let currentIndex = 0;
+  <script>
+    const images = document.querySelectorAll('.photo img');
+    let currentIndex = 0;
 
-        function showImage(index) {
-            images[currentIndex].classList.remove('active');
-            currentIndex = index;
-            images[currentIndex].classList.add('active');
-        }
+    function showImage(index) {
+      images.forEach(img => img.classList.remove('active')); // Hide all images
+      images[index].classList.add('active'); // Show the current image
+    }
 
-        function showNextImage() {
-            const nextIndex = (currentIndex + 1) % images.length;
-            showImage(nextIndex);
-        }
+    function showNextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    }
 
-        function showPreviousImage() {
-            const prevIndex = (currentIndex - 1 + images.length) % images.length;
-            showImage(prevIndex);
-        }
+    setInterval(showNextImage, 3000); // Change image every 3 seconds
 
-        document.getElementById('next').addEventListener('click', showNextImage);
-        document.getElementById('prev').addEventListener('click', showPreviousImage);
-
-        setInterval(showNextImage, 3000); // Change image every 3 seconds
-    </script>
+    // Initialize the first image
+    showImage(currentIndex);
+  </script>
 </body>
 </html>
